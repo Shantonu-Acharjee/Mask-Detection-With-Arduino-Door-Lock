@@ -82,7 +82,7 @@ maskNet = load_model("mask_detector.model")
 
 # initialize the video stream
 print("[INFO] starting video stream...")
-vs = VideoStream(src=2).start() #--------------------------------------------------------------------------
+vs = VideoStream(src=3).start() #--------------------------------------------------------------------------
 
 # loop over the frames from the video stream
 while True:
@@ -98,6 +98,7 @@ while True:
 
 	# loop over the detected face locations and their corresponding
 	# locations
+	Arduino.ArduinoState(0)
 	for (box, pred) in zip(locs, preds):
 		# unpack the bounding box and predictions
 		(startX, startY, endX, endY) = box
@@ -114,13 +115,10 @@ while True:
 
 
 
-		valu = 0
+		
 		if mask > withoutMask:
-			valu = 1
 			print('Mask')
-			
-
-		Arduino.ArduinoState(valu)
+			Arduino.ArduinoState(1)
 			
 
 
@@ -147,6 +145,7 @@ while True:
 
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
+		Arduino.ArduinoState(0)
 		break
 
 

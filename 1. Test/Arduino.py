@@ -7,7 +7,7 @@ board = ArduinoMega(port)
 
 
 
-
+board.digital[13].write(0)
 def ArduinoState(valu):
     print(valu)
         
