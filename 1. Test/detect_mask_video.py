@@ -82,7 +82,7 @@ maskNet = load_model("mask_detector.model")
 
 # initialize the video stream
 print("[INFO] starting video stream...")
-vs = VideoStream(src=3).start() #--------------------------------------------------------------------------
+vs = VideoStream(src=0).start() #--------------------------------------------------------------------------
 
 # loop over the frames from the video stream
 while True:
@@ -98,7 +98,7 @@ while True:
 
 	# loop over the detected face locations and their corresponding
 	# locations
-	Arduino.ArduinoState(0)
+	Arduino.ServoMotor(0)
 	for (box, pred) in zip(locs, preds):
 		# unpack the bounding box and predictions
 		(startX, startY, endX, endY) = box
@@ -118,7 +118,7 @@ while True:
 		
 		if mask > withoutMask:
 			print('Mask')
-			Arduino.ArduinoState(1)
+			Arduino.ServoMotor(1)
 			
 
 
