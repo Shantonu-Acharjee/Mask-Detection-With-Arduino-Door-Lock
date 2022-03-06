@@ -98,7 +98,7 @@ while True:
 
 	# loop over the detected face locations and their corresponding
 	# locations
-	Arduino.ServoMotor(0)
+	Arduino.ServoMotor(val = 0)
 	for (box, pred) in zip(locs, preds):
 		# unpack the bounding box and predictions
 		(startX, startY, endX, endY) = box
@@ -117,12 +117,13 @@ while True:
 
 
 
-
-		if mask > withoutMask: # ----------------------------------------------------------------------------
-			print('Mask')
-			Arduino.ServoMotor(1)
-				
-		
+		try:
+			if mask > withoutMask: # ----------------------------------------------------------------------------
+				print('Mask')
+				Arduino.ServoMotor(val = 1)
+					
+		except:
+			print('Arduio File Error---------')
 
 
 
