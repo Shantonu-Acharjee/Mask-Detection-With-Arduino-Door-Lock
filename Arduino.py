@@ -17,15 +17,15 @@ try:
         print('your val :.....>',val)
         global a
         if val == 1 and a == 0:
-            Motor.write(0)
-            time.sleep(1)
-            #Motor.write(75)
             a = 1
-        
-        if val != 1 and a == 1:
+            Motor.write(0)
+            time.sleep(2)
             Motor.write(75)
-            time.sleep(1)
             a = 0
+        
+        """if val != 1 and a == 1:
+            Motor.write(75)
+            a = 0"""
 
            
         
