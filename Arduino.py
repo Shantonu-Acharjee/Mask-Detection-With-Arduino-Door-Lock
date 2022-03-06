@@ -1,7 +1,6 @@
 import pyfirmata
 from pyfirmata import Arduino, SERVO
 import time
-import keyboard
 port = 'COM6'
 board = Arduino(port)
 
@@ -12,10 +11,10 @@ try:
     iter8.start()
     def ServoMotor(val = 0):
         if val == 1:
-            Motor.write(90)
+            Motor.write(0)
         
         if val != 1:
-            Motor.write(0)
+            Motor.write(75)
       
         
 except:
