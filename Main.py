@@ -9,6 +9,7 @@ import time
 import cv2
 import os
 import Arduino
+import threading
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	# grab the dimensions of the frame and then construct a blob
@@ -98,7 +99,9 @@ while True:
 
 	# loop over the detected face locations and their corresponding
 	# locations
-	Arduino.ServoMotor(val = 0)
+	#Arduino.ServoMotor(val = 0)
+	#x = threading.Thread(target= Arduino.ServoMotor, args=(0, ))
+	#x.start()
 	for (box, pred) in zip(locs, preds):
 		# unpack the bounding box and predictions
 		(startX, startY, endX, endY) = box
@@ -119,9 +122,12 @@ while True:
 
 		try:
 			if mask > withoutMask: # ----------------------------------------------------------------------------
-				print('Mask')
-				Arduino.ServoMotor(val = 1)
-					
+				#print('Mask')
+				y = threading.Thread(target= Arduino.ServoMotor, args=(1, ))
+				y.start()
+
+			else:
+				Arduino.ServoMotor(val = 0)
 		except:
 			print('Arduio File Error---------')
 
