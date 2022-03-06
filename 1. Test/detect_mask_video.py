@@ -115,12 +115,14 @@ while True:
 
 
 
-		
-		if mask > withoutMask:
+
+
+
+		if mask > withoutMask: # ----------------------------------------------------------------------------
 			print('Mask')
 			Arduino.ServoMotor(1)
-			
-
+				
+		
 
 
 
